@@ -1,0 +1,97 @@
+<ion-view view-title="" ng-app="starter">
+  <ion-content class="padding" data-ng-controller="sellerController">
+
+			<div class="list list-inset">
+				<label class="item item-input">
+					<input type="text" value="{{sellername}}" ng-model="sellername" placeholder="Seller Name">
+				</label>
+				<label class="item item-input">
+					<input type="text" value="{{phoneno}}"ng-model="phoneno" placeholder="Phone No">
+				</label>
+
+        <!-- city and state -->
+				<label class="item item-input item-select">
+					<div class="input-label">
+						City
+					</div>
+					<select ng-model="city">
+            <option value="bangalore"> Bangalore </option>
+            <option value="mysore"> Mysore </option>
+					</select>
+				</label>
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Area
+					</div>
+					<select ng-model="area">
+            <option value="rajajinagar"> Rajajinagar </option>
+            <option value="vijaynagar"> Vijaynagar </option>
+					</select>
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						I want  to
+					</div>
+					<select ng-model="rentlease">
+            <option value="sell"> Sell </option>
+            <option value="rent"> Rent </option>
+					</select>
+				</label>
+
+				<a class="item item-icon-left" style="color:#0CA8A8;margin-left:-15px;font-size:14px;background-color:#e5e5e5;">
+					<i class="icon ion-android-pin"></i>
+					Property details
+				</a>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Property type
+					</div>
+					 <select name="propertytype" id="select-type" class="search-select" data-ng-options="v.value as v.label for (x,v) in propertytype" data-ng-model="fields.propertytype">
+
+           </select>
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Dimension
+					</div>
+					<select name="u" id="select-unit-type"  data-ng-options="y.value as y.label for y in propertytype[fields.propertytype].uOptions" data-ng-model="fields.dimension">
+
+          </select>
+				</label>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+					  Cost
+					</div>
+					<select ng-model="cost">
+						<option value="1"> less than 1 Cr </option>
+						<option value="2"> 1 Cr - 2 Cr </option>
+						<option value="3"> 2 Cr - 3 Cr </option>
+						<option value="4"> 3 Cr - 4 Cr </option>
+						<option value="5"> More than  4 Cr </option>
+					</select>
+				</label>
+
+				<a class="item item-icon-left" style="color:#0CA8A8;margin-left:-15px;font-size:14px;background-color:#e5e5e5;">
+					<i class="icon ion-unlocked"></i>
+					Access Security
+				</a>
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Access
+					</div>
+					<select ng-model="access">
+            <option value="public"> Public </option>
+            <option value="private"> Private </option>
+					</select>
+				</label>
+			</div>
+		  <button class="button button-full button-positive" ng-click="postseller(sellername, phoneno, city, area, rentlease, fields.propertytype, fields.dimension, cost, access)">
+		    Save Details
+		  </button>
+
+  </ion-content>
+</ion-view>

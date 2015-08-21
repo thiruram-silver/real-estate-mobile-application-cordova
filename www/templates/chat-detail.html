@@ -1,0 +1,130 @@
+<ion-view view-title="">
+  <ion-content class="padding" ng-controller="ChatsCtrl">
+
+		<div class="row">
+			<label class="item item-input" style="padding:0;margin-top:5px;">
+				<ion-nav-bar class="bar-light" style="margin-top:40px;">
+				  <ion-nav-back-button>Back
+				  </ion-nav-back-button>
+				</ion-nav-bar>
+		  </label>
+			<div class="col col-75" style="margin-top:15px;">
+			  {{ name }}
+			</div>
+			<div class="col col-34">
+				<button class="button button-icon" ng-click="opendialer(phoneno)">
+				  <i class="icon ion-android-call"></i>
+				</button>
+				<button class="button button-icon" ng-click="opensms(phoneno)">
+				  <i class="icon ion-android-textsms"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="list list-inset">
+			<label class="item item-input">
+				<input type="text" ng-model="name" value="{{ name }}" placeholder="Buyer Name">
+			</label>
+			<label class="item item-input">
+				<input type="text" ng-model="phoneno" value="{{ phoneno }}" placeholder="Phone No">
+			</label>
+
+			<a class="item item-icon-left" style="color:#0CA8A8;margin-left:-15px;font-size:14px;background-color:#e5e5e5;">
+				<i class="icon ion-android-pin"></i>
+      <div ng-if="role == 'seller'">
+				Property details
+      </div>
+      <div ng-if="role == 'buyer'">
+				Looking for
+      </div>
+			</a>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  City
+				</div>
+				<select ng-model="city">
+				  <option selected value="{{ city }}">{{ city }}</option>
+          <option value="bangalore"> Bangalore </option>
+          <option value="mysore"> Mysore </option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Area
+				</div>
+				<select ng-model="area">
+				  <option selected value="{{ area }}">{{ area }}</option>
+          <option value="rajajinagar"> Rajajinagar </option>
+          <option value="vijaynagar"> Vijaynagar </option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  I want to
+				</div>
+				<select ng-model="rentlease">
+				  <option selected value="{{ rentlease }}">{{ rentlease }}</option>
+          <option value="sell"> Sell </option>
+          <option value="rent"> Rent </option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Property type
+				</div>
+				<select ng-model="propertytype">
+				  <option selected value="{{ propertytype }}">{{ propertytype }}</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Dimension
+				</div>
+				<select ng-model="dimension">
+				  <option selected value="{{ dimension }}">{{ dimension }}</option>
+				</select>
+			</label>
+
+			<label class="item item-input item-select">
+				<div class="input-label">
+				  Budget
+				</div>
+				<select ng-model="cost">
+				  <option selected value="{{ cost }}">{{ cost }}</option>
+				  <option value="1"> less than 1 Cr </option>
+					<option value="2"> 1 Cr - 2 Cr </option>
+					<option value="3"> 2 Cr - 3 Cr </option>
+					<option value="4"> 3 Cr - 4 Cr </option>
+					<option value="5"> More than  4 Cr </option>
+				</select>
+			</label>
+
+				<a class="item item-icon-left" style="color:#0CA8A8;margin-left:-15px;font-size:14px;background-color:#e5e5e5;">
+					<i class="icon ion-unlocked"></i>
+					Access Security
+				</a>
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Access
+					</div>
+					<select ng-model="access">
+				    <option selected value="{{ access }}">{{ access }}</option>
+            <option value="public"> Public </option>
+            <option value="private"> Private </option>
+					</select>
+				</label>
+
+		</div>
+    <input type="hidden" ng-model="id" value="{{ id }}">
+    <input type="hidden" ng-model="role" value="{{ role }}">
+		<button class="button button-full button-positive" ng-click="updatecontact(name, phoneno, city, area, rentlease, propertytype, dimension, cost, access, id, role)">
+        Update
+    </button>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,128 @@
+<div ng-controller="ChatsCtrl">
+
+		<ion-view view-title="">
+			<ion-content>
+				<div style="margin: 8px 10px;" class="list list-inset">
+					<div class="row" style="padding: 0 3px;">
+						<div class="col col-40" style="padding: 0 3px;">
+				  <button class="button button-full button-positive {{ sellerclass }}" ng-click="loadsellercontacts()">
+				  Seller
+				  </button>
+				    </div>
+						<div class="col col-40" style="padding: 0 3px;">
+				  <button class="button button-full button-positive {{ buyerclass }}" ng-click="loadbuyercontacts()">
+				  Buyer
+				  </button>
+				    </div>
+						<div class="col col-20" style="padding: 0 3px;">
+				    <button class="button button-full button-positive" ng-click="toggleGroup(group)">
+				      <i class="icon ion-android-menu"></i>
+				    </button>
+				    </div>
+					</div>
+				</div>
+
+        <div class="list list-inset" style="margin: 5px 10px;">
+					<label class="item item-input">
+						<i class="icon ion-search placeholder-icon"></i>
+						<input type="text" ng-model="searchcontact.$" placeholder="Search">
+					</label>
+        </div>
+
+        <div class="item-stable" ng-click="toggleGroup(group)" ng-class="{active: isGroupShown(group)}">
+          Apply filter <i style="float:right;" class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+        </div>
+        <div class="list list-inset item-accordion ng-hide" style="margin: 5px 10px;" ng-show="isGroupShown(group)">
+		      <!-- city and state -->
+					<label class="item item-input item-select">
+						<div class="input-label">
+							City
+						</div>
+						<select ng-model="searchcontact.city">
+              <option value="bangalore"> Bangalore </option>
+              <option value="mysore"> Mysore </option>
+						</select>
+					</label>
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Area
+						</div>
+						<select ng-model="searchcontact.area">
+              <option value="rajajinagar"> Rajajinagar </option>
+              <option value="vijaynagar"> Vijaynagar </option>
+						</select>
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							I want  to
+						</div>
+						<select ng-model="searchcontact.rentlease">
+		          <option value="sell"> Sell </option>
+		          <option value="rent"> Rent/Lease out </option>
+						</select>
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Property type
+						</div>
+						 <select name="propertytype" id="select-type" class="search-select" data-ng-options="v.value as v.label for (x,v) in propertytype" data-ng-model="searchcontact.propertytype">
+
+		         </select>
+		  
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Dimension
+						</div>
+						<select name="u" id="select-unit-type"  data-ng-options="y.value as y.label for y in propertytype[searchcontact.propertytype].uOptions" data-ng-model="searchcontact.dimension">
+
+		        </select>
+					</label>
+
+					<label class="item item-input item-select">
+						<div class="input-label">
+							Cost
+						</div>
+						<select ng-model="searchcontact.cost">
+							<option value="1"> less than 1 Cr </option>
+							<option value="2"> 1 Cr - 2 Cr </option>
+							<option value="3"> 2 Cr - 3 Cr </option>
+							<option value="4"> 3 Cr - 4 Cr </option>
+							<option value="5"> More than  4 Cr </option>
+						</select>
+					</label>
+        </div>
+
+				<ion-list>
+				  <div class="list card" style="padding:10px 10px;text-align:center;" ng-if="contact == null">
+				  <div class="row">
+				  <div class="col">
+				  <i class="icon ion-android-person" style="font-size:6em;color:#00bfbf;"></i>
+				  <p>Please select Seller/Buyer to load contacts.</p>
+				  </div>
+				  </div>
+				  </div>
+				</ion-list>
+
+				<ion-list>
+				  <div class="list card" ng-if="contact != null" style="margin:10px;">
+				  <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="c in contact | filter:searchcontact" type="item-text-wrap" href="#/tab/search/{{c.id}}/{{c.role}}">
+				    <img ng-src="./img/{{c.role}}.png">
+				    <h2>{{c.name}}</h2>
+				    <p>{{c.phoneno}}</p>
+				    <i class="icon ion-chevron-right icon-accessory"></i>
+
+				    <ion-option-button class="button-assertive" ng-click="">
+				      Delete
+				    </ion-option-button>
+				  </ion-item>
+				  </div>
+				</ion-list>
+
+			</ion-content>
+		</ion-view>
+ 
+</div>

@@ -1,0 +1,35 @@
+.border-left {
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+}
+.border-right {
+  border-left: 2px solid #e5e5e5;
+}
+
+/*
+ * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
+ */
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.item-stable {
+  margin:3px 5%;
+  border-bottom: 2px solid #00bfbf;
+}
+.seller{
+  background-color: #b1c451!important;
+}
+
+.buyer{
+  background-color: #a574d1!important;
+}
